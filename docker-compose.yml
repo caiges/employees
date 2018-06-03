@@ -12,7 +12,7 @@ services:
     networks:
       - lw-employees
     volumes:
-      - $PWD/employees.sql:/docker-entrypoint-initdb.d/employees.sql
+      - $PWD/mysql-entrypoint:/docker-entrypoint-initdb.d
   adminer:
     image: adminer
     restart: always
