@@ -11,6 +11,8 @@ services:
       MYSQL_PASSWORD: db
     networks:
       - lw-employees
+    ports:
+      - 3306:3306
     volumes:
       - $PWD/mysql-entrypoint:/docker-entrypoint-initdb.d
   adminer:
