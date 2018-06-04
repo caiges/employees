@@ -1,6 +1,19 @@
 version: '3.1'
 
 services:
+  api:
+    image: ruby:2.5
+    environment:
+      LC_ALL: C.UTF-8
+      LANG: en_US.UTF-8
+      LANGUAGE: en_US.UTF-8
+    ports:
+      - 9292:9292
+    networks:
+      - lw-employees
+    volumes:
+      - $PWD:/usr/src/app
+    working_dir: /usr/src/app
   db:
     image: mysql:5
     restart: always
