@@ -8,9 +8,8 @@ module Employeesdb
 
       namespace :salaries
 
-      desc 'department DEPARTMENT YEAR', 'Get department salary spend per quarter for a fiscal year'
-      method_option :help, aliases: '-h', type: :boolean,
-                           desc: 'Display usage information'
+      desc 'department DEPARTMENT YEAR', 'Get quarterly spend'
+      method_option :help, aliases: '-h', type: :boolean, desc: 'Display usage information'
       def department(department, year)
         if options[:help]
           invoke :help, ['department']

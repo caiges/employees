@@ -1,7 +1,7 @@
 require 'employeesdb/commands/salaries/department'
 
 RSpec.describe Employeesdb::Commands::Salaries::Department do
-  it "executes `salaries department` command successfully" do
+  skip "executes `salaries department` command successfully" do
     output = StringIO.new
     department = nil
     year = nil
