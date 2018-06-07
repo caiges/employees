@@ -20,7 +20,12 @@ module Employeesdb
         def execute(input: $stdin, output: $stdout)
 
           # Connect to db
-          client = Mysql2::Client.new(:host => ENV['EMP_HOST'], :database => ENV['EMP_DATABASE'], :username => ENV['EMP_USERNAME'], :password => ENV['EMP_PASSWORD'])
+          client = Mysql2::Client.new(
+            host: ENV['EMP_HOST'],
+            database: ENV['EMP_DATABASE'],
+            username: ENV['EMP_USERNAME'],
+            password: ENV['EMP_PASSWORD']
+          )
 
           # Get departments
           department_db = Employeesdb::DB::Department.new client
