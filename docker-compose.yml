@@ -1,12 +1,16 @@
 version: '3.1'
 
 services:
-  api:
+  app:
     image: ruby:2.5
     environment:
       LC_ALL: C.UTF-8
       LANG: en_US.UTF-8
       LANGUAGE: en_US.UTF-8
+      EMP_HOST: db
+      EMP_DATABASE: employees
+      EMP_USERNAME: db
+      EMP_PASSWORD: db
     ports:
       - 9292:9292
     networks:

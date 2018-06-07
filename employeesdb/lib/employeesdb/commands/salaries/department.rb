@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
+require 'mysql2'
+require 'tty-table'
+
 require_relative '../../command'
+
 
 module Employeesdb
   module Commands
@@ -13,9 +17,19 @@ module Employeesdb
         end
 
         def execute(input: $stdin, output: $stdout)
-          # Command logic goes here ...
-          output.puts "Gathering salaries for department #{@department} for fiscal year #{@year}"
-          output.puts "OK"
+
+          # Connect to db
+          client = Mysql2::Client.new(:host => ENV['EMP_HOST'], :database => ENV['EMP_DATABASE'], :username => ENV['EMP_USERNAME'], :password => ENV['EMP_PASSWORD'])
+
+          results = client.query("SELECT * FROM departments")
+          rows = []
+          results.each as: :array do | row |
+            rows << row
+          end
+
+          table = TTY::Table.new results.fields, rows
+
+          puts table
         end
       end
     end
