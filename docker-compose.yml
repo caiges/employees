@@ -11,6 +11,8 @@ services:
       EMP_DATABASE: employees
       EMP_USERNAME: db
       EMP_PASSWORD: db
+    depends_on:
+      - db
     ports:
       - 9292:9292
     networks:
