@@ -15,20 +15,20 @@ module Employeesdb
           @department = department
           @year = year
           @options = options
-        end
-
-        def execute(input: $stdin, output: $stdout)
-
-          # Connect to db
-          client = Mysql2::Client.new(
+          @client = Mysql2::Client.new(
             host: ENV['EMP_HOST'],
             database: ENV['EMP_DATABASE'],
             username: ENV['EMP_USERNAME'],
             password: ENV['EMP_PASSWORD']
           )
+        end
+
+        def execute(input: $stdin, output: $stdout)
+          # Create a quarterly spend report
+          # Output table of results
 
           # Get departments
-          department_db = Employeesdb::DB::Department.new client
+          department_db = Employeesdb::DB::Department.new @client
 
           results = department_db.assignments_by_fiscal_year @year
           rows = []
