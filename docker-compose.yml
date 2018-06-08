@@ -1,8 +1,10 @@
-version: '3.1'
+version: '3.4'
 
 services:
   app:
-    image: ruby:2.5
+    build:
+      context: .
+      target: builder
     environment:
       LC_ALL: C.UTF-8
       LANG: en_US.UTF-8
@@ -20,6 +22,20 @@ services:
     volumes:
       - $PWD:/usr/src/app
     working_dir: /usr/src/app/employeesdb
+  employeesdb:
+    build: .
+    depends_on:
+      - db
+    networks:
+      - lw-employees
+    environment:
+      LC_ALL: C.UTF-8
+      LANG: en_US.UTF-8
+      LANGUAGE: en_US.UTF-8
+      EMP_HOST: db
+      EMP_DATABASE: employees
+      EMP_USERNAME: db
+      EMP_PASSWORD: db
   db:
     image: mysql:5
     restart: always

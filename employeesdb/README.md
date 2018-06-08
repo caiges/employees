@@ -1,6 +1,8 @@
-# Employee report thing-a-do-dad
+> employeesdb is a toolchain for querying the employees database provided by https://github.com/datacharmer/test_db.
 
-To run the exercise you can use docker-compose command:
+# Developing on the employeesdb app
+
+To work on the exercise you can use docker-compose command:
 
 ```
 docker-compose run app bash
@@ -9,5 +11,15 @@ docker-compose run app bash
 Once in the shell, you can run:
 
 ```
-employeesdb salaries department 1999
+bundle
+...
+edit some code
+...
+./exe/employeesdb salaries department 1999
+```
+
+# Running a production-like build of employeesdb
+
+```
+docker-compose run employeesdb salaries department 1999
 ```
