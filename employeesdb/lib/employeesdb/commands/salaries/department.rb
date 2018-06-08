@@ -11,8 +11,7 @@ module Employeesdb
   module Commands
     class Salaries
       class Department < Employeesdb::Command
-        def initialize(department, year, options)
-          @department = department
+        def initialize(year, options)
           @year = year
           @options = options
           @client = Mysql2::Client.new(

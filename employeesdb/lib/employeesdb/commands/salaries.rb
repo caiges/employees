@@ -8,14 +8,14 @@ module Employeesdb
 
       namespace :salaries
 
-      desc 'department DEPARTMENT YEAR', 'Get quarterly spend'
+      desc 'department YEAR', 'Get quarterly spend'
       method_option :help, aliases: '-h', type: :boolean, desc: 'Display usage information'
-      def department(department, year)
+      def department(year)
         if options[:help]
-          invoke :help, ['department']
+          invoke :help
         else
           require_relative 'salaries/department'
-          Employeesdb::Commands::Salaries::Department.new(department, year, options).execute
+          Employeesdb::Commands::Salaries::Department.new(year, options).execute
         end
       end
     end
