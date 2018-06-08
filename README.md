@@ -18,6 +18,14 @@ edit some code
 ./exe/employeesdb salaries department 1999
 ```
 
+## Running tests
+
+While in the shell run:
+
+```
+rake spec
+```
+
 # Running a production-like build of employeesdb
 
 ```
