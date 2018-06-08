@@ -2,6 +2,7 @@
 
 require 'mysql2'
 require 'tty-table'
+require 'tty-spinner'
 
 require_relative '../../command'
 require_relative '../../db/salaries'
@@ -25,8 +26,11 @@ module Employeesdb
         def execute(input: $stdin, output: $stdout)
           # Get departments
           salaries = Employeesdb::DB::Salaries.new @client
-
           fiscal_year = Employeesdb::Date::Finance::FiscalYear.new @year.to_i
+
+          spinner = TTY::Spinner.new("[:spinner] Fetching amounts paid per department by fiscal quarter for the fiscal year #{@year} ...", format: :pulse_2)
+          spinner.auto_spin
+          # Get the breakdown
           amount_paid_per_quarter_by_department = salaries.amount_paid_per_quarter_by_department fiscal_year
           
           rows = []
@@ -34,6 +38,8 @@ module Employeesdb
           amount_paid_per_quarter_by_department.each as: :array do | row |
             rows << [row[0], currency_format % row[1].round(2), currency_format % row[2].round(2), currency_format % row[3].round(2), currency_format % row[4].round(2)]
           end
+
+          spinner.stop('Done!')
 
           table = TTY::Table.new amount_paid_per_quarter_by_department.fields, rows
 
