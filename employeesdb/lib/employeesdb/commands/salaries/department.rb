@@ -28,8 +28,10 @@ module Employeesdb
           salaries = Employeesdb::DB::Salaries.new @client
           fiscal_year = Employeesdb::Date::Finance::FiscalYear.new @year.to_i
 
+          # Setup a spinner so we make the user feels fuzzy and that we're actually doing something.
           spinner = TTY::Spinner.new("[:spinner] Fetching amounts paid per department by fiscal quarter for the fiscal year #{@year} ...", format: :pulse_2)
           spinner.auto_spin
+
           # Get the breakdown
           amount_paid_per_quarter_by_department = salaries.amount_paid_per_quarter_by_department fiscal_year
           
