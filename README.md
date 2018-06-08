@@ -28,6 +28,8 @@ rake spec
 
 # Running a production-like build of employeesdb
 
+This uses a multi-stage Docker build to demonstrate how you might run this toolchain in as a typical user would.
+
 ```
 docker-compose run employeesdb salaries department 1999
 ```
