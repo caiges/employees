@@ -2,7 +2,7 @@
 
 # Developing on the employeesdb app
 
-To work on the exercise you can use docker-compose command:
+To work on this you can use docker-compose command:
 
 ```
 docker-compose run app bash
