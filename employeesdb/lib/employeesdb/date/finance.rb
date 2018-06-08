@@ -13,6 +13,14 @@ module Employeesdb
           @fourth = Range.new(@third.end.next_day, @third.end.next_month(3))
         end
 
+        def begin
+          @first.begin
+        end
+
+        def end
+          @fourth.end
+        end
+
         def to_s
           "First: #{@first}\nSecond: #{@second}\nThird: #{@third}\nFourth: #{@fourth}"
         end
