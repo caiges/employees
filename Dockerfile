@@ -1,5 +1,4 @@
 FROM ruby:2.5 as builder
-
 COPY employeesdb /usr/src/app/
 WORKDIR /usr/src/app
 RUN bundle
